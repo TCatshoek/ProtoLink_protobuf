@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+message Command {
+  oneof c {
+    UpdateFB updatefb = 1;
+  }
+}
+
+message UpdateFB {
+  int32 len = 1;
+  bytes fb = 2;
+}
+
+message Result {
+  enum ResultCode {
+    OK = 0;
+    ERROR = 1;
+  }
+  string message = 1;
+}
