@@ -1,14 +1,17 @@
 syntax = "proto3";
 
+import 'nanopb.proto';
+
 message Command {
+  option (nanopb_msgopt).submsg_callback = true;
+
   oneof c {
     UpdateFB updatefb = 1;
   }
 }
 
 message UpdateFB {
-  int32 len = 1;
-  bytes fb = 2;
+  bytes fb = 1;
 }
 
 message Result {
